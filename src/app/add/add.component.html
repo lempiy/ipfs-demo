@@ -1,0 +1,22 @@
+<div class="content">
+    <div class="progress-bar">
+    <div [hidden]="status != 'pick'">
+        <input type="file" mat-raised-button accept="video/mp4" (change)="onFileSelected($event)" />
+    </div>
+    <div class="progress-bar"  [hidden]="status != 'loading'">
+        <mat-progress-bar mode="determinate" [value]="value"></mat-progress-bar>
+    </div>
+    <div class="progress-bar" [hidden]="status != 'transcoding' && status != 'waitReady'">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <p [hidden]="status != 'loading'">
+        Uploading...
+    </p>
+    <p [hidden]="status != 'waitReady'">
+        Waiting file to be ready for transcoding...
+    </p>
+    <p [hidden]="status != 'transcoding'">
+        Transcoding and uploading to IPFS...
+    </p>
+    </div>
+</div>
